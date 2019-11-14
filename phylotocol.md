@@ -1,6 +1,6 @@
 # PLANNED ANALYSES FOR CLASSIFYING NEMATOSTELLA ANTHOX6A
  Principle Investigator: Joseph Ryan and Bailey Steinworth
- Draft or Version Number: v.1.0
+ Draft or Version Number: v.1.1
  Date: 9 March 2018
  Note: this document will be updated (updates will be tracked through GitHub
 
@@ -55,7 +55,7 @@ Accurately classify cnidarian Hox and ParaHox genes from a wide array of cnidari
 
 #### 2.1 Build dataset.
 
-We will start with four sets of Hox/ParaHox homeodomains from the curated HomeoDB (Zhong et al, 2008): *Homo sapiens*, *Branchiostoma floridae*, *Drosophila melanogaster*, and *Tribolium castaneum*. We will include the spiralia Hox/ParaHox homeodomains *Capitella teleta* and *Crassostrea gigas* (as classified in Paps et al, 2015 and Zwarycz et al, 2015). We will include the Hox/ParaHox genes from *Nematostella vectensis* and *Acropora digitifera* (as classified in DuBuc et al, 2012). We will include the *Hydra magnipapillata* and *Clytia hemisphaerica* Hox/ParaHox genes (as classified in Chiori et al, 2009). NOTE: HmaCnox4 is listed as pirS39067; we could not find this so are using CAA45911.1. We will use hd60.hmm hidden Markov model from Zwarycz et al 2015 to search transcriptomes from the following:  *Anthopleura elegantissima*, *Lobactis scutaria*, *Corallium rubrum*, *Renilla reniforms*, *Eunicella cavolinii*, *Haliclystus sanjuanensis*, *Calvadosia cruxmelitensis*, *Chironex fleckeri*, *Alatina alata*, *Cassiopea xamachana*, *Chrysaora fuscescens*, and *Craspedacusta sowerbyi*.
+We will start with four sets of Hox/ParaHox homeodomains from the curated HomeoDB (Zhong et al, 2008): *Homo sapiens*, *Branchiostoma floridae*, *Drosophila melanogaster*, and *Tribolium castaneum*. We will include the spiralia Hox/ParaHox homeodomains *Capitella teleta* and *Crassostrea gigas* (as classified in Paps et al, 2015 and Zwarycz et al, 2015). We will include the Hox/ParaHox genes from *Nematostella vectensis* and *Acropora digitifera* (as classified in DuBuc et al, 2012). We will include the *Hydra magnipapillata* and *Clytia hemisphaerica* Hox/ParaHox genes (as classified in Chiori et al, 2009). We will use hd60.hmm hidden Markov model from Zwarycz et al 2015 to search transcriptomes from the following:  *Anthopleura elegantissima*, *Lobactis scutaria*, *Corallium rubrum*, *Renilla reniforms*, *Eunicella cavolinii*, *Haliclystus sanjuanensis*, *Calvadosia cruxmelitensis*, *Chironex fleckeri*, *Alatina alata*, *Cassiopea xamachana*, *Chrysaora fuscescens*, and *Craspedacusta sowerbyi*.
 
 This script runs hmmsearch, stockholm2fasta, and some custom code to remove indels and fill end gaps.
 ```
@@ -63,6 +63,7 @@ This script runs hmmsearch, stockholm2fasta, and some custom code to remove inde
 ```
 
 We will remove from the resulting alignment any sequences with more than 5 gaps (8.3%)
+Cassiopea sequences with more than 5 gaps will be replaced with the completed sequence which we have cloned.
 
 #### 2.2 Run ML tree
 
@@ -129,10 +130,8 @@ All trees will be presented supplement.  And differences between Bayes and ML wi
 
 #### 2.7 AU Test
 
-We will test the following topologies with the AU test using IQTREE
+We will test all possible sister-group relationships including at least one cnidarian-only clade, with the AU test using IQTREE. We will also test the following topologies with the AU test using IQTREE
 ```
-((ax9,gsx),all,other,clades)
-((ax6a,ax6),all,other,clades)
 ((ax6a,ax6,Hox1),all,other,clades)
 ((ax7,ax8a,ax8b,Hox2),all,other,clades)
 ((cdx,HD065,xlox),all,other,clades)
